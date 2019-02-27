@@ -1,0 +1,12 @@
+# main
+docker-compose.override.yml
+
+# services
+wordpress/
+mysql/data/
+
+nginx/conf.d/*.conf
+nginx/conf.d/default.template
+nginx/ssl
+
+backups/

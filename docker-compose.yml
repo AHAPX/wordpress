@@ -1,0 +1,28 @@
+database:
+  image: mysql
+  volumes:
+    - ./mysql/data:/var/lib/mysql
+  restart: always
+
+wordpress:
+  image: wordpress:fpm
+  volumes:
+    - ./wordpress:/var/www/html
+  links:
+    - database
+  restart: always
+
+nginx:
+  build: builds/nginx
+  environment:
+    PHP_FPM_SOCK: wordpress:9000
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./nginx/ssl:/etc/nginx/ssl
+    - ./wordpress:/var/www/html
+  links:
+    - wordpress
+  restart: always

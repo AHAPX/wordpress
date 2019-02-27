@@ -1,0 +1,14 @@
+database:
+  environment:
+    MYSQL_ROOT_PASSWORD: password
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: password
+    MYSQL_DATABASE: wordpress
+
+wordpress:
+  environment:
+    WORDPRESS_DB_HOST: database
+    WORDPRESS_DB_USER: wordpress
+    WORDPRESS_DB_PASSWORD: password
+    WORDPRESS_DB_NAME: wordpress
+    WORDPRESS_TABLE_PREFIX: wp_
